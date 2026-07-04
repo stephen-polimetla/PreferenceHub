@@ -1,0 +1,4 @@
+.app-fade-enter,
+.app-fade-exit {
+  opacity: 0;
+}

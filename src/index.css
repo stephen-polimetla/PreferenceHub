@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-screen bg-slate-950 text-slate-100 antialiased;
+}
+
+::selection {
+  @apply bg-violet-500/30 text-white;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.9);
+  outline-offset: 3px;
+}
+
+body ::-webkit-scrollbar {
+  width: 12px;
+}
+
+body ::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 rounded-full;
+}
+
+body ::-webkit-scrollbar-track {
+  @apply bg-slate-950;
+}
