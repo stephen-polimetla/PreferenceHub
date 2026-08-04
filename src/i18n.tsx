@@ -5,6 +5,15 @@ import { LocaleKey } from './types';
 
 const translations = { en, te };
 
+function humanizeKey(key: string) {
+  const lastSegment = key.split('.').pop() ?? key;
+  return lastSegment
+    .replace(/([A-Z])/g, ' $1')
+    .replace(/[-_]/g, ' ')
+    .replace(/^\w/, (match) => match.toUpperCase())
+    .replace(/\b\w/g, (match) => match.toUpperCase());
+}
+
 interface I18nContextType {
   lang: LocaleKey;
   setLang: (lang: LocaleKey) => void;
@@ -29,7 +38,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem('preferencehub-language', newLang);
       },
       t: (key: string, replacements: Record<string, string | number> = {}) => {
-        const value = (translations[lang] as Record<string, string>)[key] ?? key;
+        const value = (translations[lang] as Record<string, string>)[key] ?? humanizeKey(key);
         return Object.entries(replacements).reduce(
           (text, [placeholder, replacement]) => text.replace(new RegExp(`{{\\s*${placeholder}\\s*}}`, 'g'), String(replacement)),
           value,

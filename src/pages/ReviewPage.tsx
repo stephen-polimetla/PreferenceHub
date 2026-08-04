@@ -13,6 +13,32 @@ const defaultValues: FormValues = {
   ageGroup: '',
   gender: '',
   genderOther: '',
+  favoriteCuisine: '',
+  favoriteDessert: '',
+  favoriteDrink: '',
+  favoriteSeason: '',
+  favoriteSport: '',
+  favoriteMovieGenre: '',
+  favoriteMusicGenre: '',
+  favoriteActor: '',
+  favoriteActress: '',
+  favoriteHolidayDestination: '',
+  favoriteHobby: '',
+  dreamCarColor: '',
+  preferredClothingColor: '',
+  favoriteFestival: '',
+  favoriteIceCream: '',
+  favoriteSuperhero: '',
+  favoriteQuote: '',
+  favoriteBookGenre: '',
+  favoriteTimeOfDay: '',
+  coffeeOrTea: '',
+  sweetOrSpicy: '',
+  beachOrMountains: '',
+  androidOrIphone: '',
+  netflixOrYoutube: '',
+  summerOrWinter: '',
+  rainOrSnow: '',
   favoriteColor: '',
   favoriteColorOther: '',
   favoriteFlower: '',
@@ -53,6 +79,32 @@ export default function ReviewPage() {
     firstName: formData.firstName.trim() || t('review.noAnswer'),
     ageGroup: getAnswer(formData.ageGroup, '', 'ageGroup', t),
     gender: getAnswer(formData.gender, formData.genderOther, 'gender', t),
+    favoriteCuisine: formData.favoriteCuisine || t('review.noAnswer'),
+    favoriteDessert: formData.favoriteDessert || t('review.noAnswer'),
+    favoriteDrink: formData.favoriteDrink || t('review.noAnswer'),
+    favoriteSeason: formData.favoriteSeason || t('review.noAnswer'),
+    favoriteSport: formData.favoriteSport || t('review.noAnswer'),
+    favoriteMovieGenre: formData.favoriteMovieGenre || t('review.noAnswer'),
+    favoriteMusicGenre: formData.favoriteMusicGenre || t('review.noAnswer'),
+    favoriteActor: formData.favoriteActor || t('review.noAnswer'),
+    favoriteActress: formData.favoriteActress || t('review.noAnswer'),
+    favoriteHolidayDestination: formData.favoriteHolidayDestination || t('review.noAnswer'),
+    favoriteHobby: formData.favoriteHobby || t('review.noAnswer'),
+    dreamCarColor: formData.dreamCarColor || t('review.noAnswer'),
+    preferredClothingColor: formData.preferredClothingColor || t('review.noAnswer'),
+    favoriteFestival: formData.favoriteFestival || t('review.noAnswer'),
+    favoriteIceCream: formData.favoriteIceCream || t('review.noAnswer'),
+    favoriteSuperhero: formData.favoriteSuperhero || t('review.noAnswer'),
+    favoriteQuote: formData.favoriteQuote || t('review.noAnswer'),
+    favoriteBookGenre: formData.favoriteBookGenre || t('review.noAnswer'),
+    favoriteTimeOfDay: formData.favoriteTimeOfDay || t('review.noAnswer'),
+    coffeeOrTea: formData.coffeeOrTea || t('review.noAnswer'),
+    sweetOrSpicy: formData.sweetOrSpicy || t('review.noAnswer'),
+    beachOrMountains: formData.beachOrMountains || t('review.noAnswer'),
+    androidOrIphone: formData.androidOrIphone || t('review.noAnswer'),
+    netflixOrYoutube: formData.netflixOrYoutube || t('review.noAnswer'),
+    summerOrWinter: formData.summerOrWinter || t('review.noAnswer'),
+    rainOrSnow: formData.rainOrSnow || t('review.noAnswer'),
     favoriteColor: getAnswer(formData.favoriteColor, formData.favoriteColorOther, 'favoriteColor', t),
     favoriteFlower: getAnswer(formData.favoriteFlower, formData.favoriteFlowerOther, 'favoriteFlower', t),
     favoriteFruit: getAnswer(formData.favoriteFruit, formData.favoriteFruitOther, 'favoriteFruit', t),
@@ -119,15 +171,43 @@ export default function ReviewPage() {
     }
   };
 
+  const reviewFields = [
+    'firstName',
+    'ageGroup',
+    'gender',
+    'favoriteColor',
+    'favoriteFlower',
+    'favoriteFruit',
+    'favoriteAnimal',
+    'favoriteCuisine',
+    'favoriteDessert',
+    'favoriteDrink',
+    'favoriteSeason',
+    'favoriteSport',
+    'favoriteMovieGenre',
+    'favoriteMusicGenre',
+    'favoriteBookGenre',
+    'favoriteTimeOfDay',
+    'coffeeOrTea',
+    'sweetOrSpicy',
+    'beachOrMountains',
+    'androidOrIphone',
+    'netflixOrYoutube',
+    'summerOrWinter',
+    'rainOrSnow',
+    'sunriseOrSunset',
+    'petsPreference',
+  ] as const;
+
   return (
     <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 pb-10">
       <Card title={t('review.title')} description={t('review.subtitle')}>
         <div className="space-y-6">
           <div className="grid gap-4 rounded-3xl border border-violet-500/10 bg-slate-950/80 p-6 shadow-soft sm:grid-cols-2">
-            {Object.entries(answers).map(([key, value]) => (
+            {reviewFields.map((key) => (
               <div key={key} className="space-y-2 rounded-3xl bg-slate-900/80 p-4">
                 <p className="text-sm uppercase tracking-[0.16em] text-slate-400">{t(`review.labels.${key}`)}</p>
-                <p className="text-base text-slate-100">{value}</p>
+                <p className="text-base text-slate-100">{answers[key]}</p>
                 <button
                   type="button"
                   onClick={() => navigate(`/survey?step=${getReviewStep(key)}`)}
@@ -168,8 +248,24 @@ function getReviewStep(key: string) {
     favoriteFlower: 4,
     favoriteFruit: 5,
     favoriteAnimal: 6,
-    sunriseOrSunset: 7,
-    petsPreference: 8,
+    favoriteCuisine: 7,
+    favoriteDessert: 8,
+    favoriteDrink: 9,
+    favoriteSeason: 10,
+    favoriteSport: 11,
+    favoriteMovieGenre: 12,
+    favoriteMusicGenre: 13,
+    favoriteBookGenre: 14,
+    favoriteTimeOfDay: 15,
+    coffeeOrTea: 16,
+    sweetOrSpicy: 17,
+    beachOrMountains: 18,
+    androidOrIphone: 19,
+    netflixOrYoutube: 20,
+    summerOrWinter: 21,
+    rainOrSnow: 22,
+    sunriseOrSunset: 23,
+    petsPreference: 24,
   };
   return map[key] ?? 0;
 }

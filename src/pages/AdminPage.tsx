@@ -100,24 +100,77 @@ export default function AdminPage() {
     setSubmissions((current) => current.filter((item) => item.id !== id));
   };
 
+  const answerKeys = [
+    'firstName',
+    'ageGroup',
+    'gender',
+    'favoriteCuisine',
+    'favoriteDessert',
+    'favoriteDrink',
+    'favoriteSeason',
+    'favoriteSport',
+    'favoriteMovieGenre',
+    'favoriteMusicGenre',
+    'favoriteBookGenre',
+    'favoriteTimeOfDay',
+    'coffeeOrTea',
+    'sweetOrSpicy',
+    'beachOrMountains',
+    'androidOrIphone',
+    'netflixOrYoutube',
+    'summerOrWinter',
+    'rainOrSnow',
+    'favoriteColor',
+    'favoriteFlower',
+    'favoriteFruit',
+    'favoriteAnimal',
+    'sunriseOrSunset',
+    'petsPreference',
+  ] as const;
+
   const handleExport = () => {
+    const headerRow = [
+      'ID',
+      'Submitted',
+      'Language',
+      'Browser',
+      'Device',
+      'First Name',
+      'Age Group',
+      'Gender',
+      'Favorite Cuisine',
+      'Favorite Dessert',
+      'Favorite Drink',
+      'Favorite Season',
+      'Favorite Sport',
+      'Movie Genre',
+      'Music Genre',
+      'Book Genre',
+      'Time Of Day',
+      'Coffee or Tea',
+      'Sweet or Spicy',
+      'Beach or Mountains',
+      'Android or iPhone',
+      'Netflix or YouTube',
+      'Summer or Winter',
+      'Rain or Snow',
+      'Favorite Color',
+      'Flower',
+      'Fruit',
+      'Animal',
+      'Sunrise/Sunset',
+      'Pets Preference',
+    ];
+
     const rows = [
-      ['ID', 'Submitted', 'Language', 'Browser', 'Device', 'First Name', 'Age Group', 'Gender', 'Favorite Color', 'Flower', 'Fruit', 'Animal', 'Sunrise/Sunset', 'Pets Preference'],
+      headerRow,
       ...filtered.map((submission) => [
         submission.id,
         submission.createdAtText,
         submission.language,
         submission.browser,
         submission.deviceType,
-        submission.answers.firstName,
-        submission.answers.ageGroup,
-        submission.answers.gender,
-        submission.answers.favoriteColor,
-        submission.answers.favoriteFlower,
-        submission.answers.favoriteFruit,
-        submission.answers.favoriteAnimal,
-        submission.answers.sunriseOrSunset,
-        submission.answers.petsPreference,
+        ...answerKeys.map((key) => submission.answers[key]),
       ]),
     ];
     downloadCsv('preferencehub-submissions.csv', rows);
@@ -236,10 +289,10 @@ export default function AdminPage() {
                 </div>
               </div>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                {Object.entries(submission.answers).map(([key, value]) => (
+                {answerKeys.map((key) => (
                   <div key={key} className="rounded-3xl bg-slate-900/80 p-4">
                     <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{t(`review.labels.${key}`)}</p>
-                    <p className="mt-2 text-sm text-slate-100">{value}</p>
+                    <p className="mt-2 text-sm text-slate-100">{submission.answers[key]}</p>
                   </div>
                 ))}
               </div>

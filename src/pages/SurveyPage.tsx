@@ -14,6 +14,32 @@ const defaultValues: FormValues = {
   ageGroup: '',
   gender: '',
   genderOther: '',
+  favoriteCuisine: '',
+  favoriteDessert: '',
+  favoriteDrink: '',
+  favoriteSeason: '',
+  favoriteSport: '',
+  favoriteMovieGenre: '',
+  favoriteMusicGenre: '',
+  favoriteActor: '',
+  favoriteActress: '',
+  favoriteHolidayDestination: '',
+  favoriteHobby: '',
+  dreamCarColor: '',
+  preferredClothingColor: '',
+  favoriteFestival: '',
+  favoriteIceCream: '',
+  favoriteSuperhero: '',
+  favoriteQuote: '',
+  favoriteBookGenre: '',
+  favoriteTimeOfDay: '',
+  coffeeOrTea: '',
+  sweetOrSpicy: '',
+  beachOrMountains: '',
+  androidOrIphone: '',
+  netflixOrYoutube: '',
+  summerOrWinter: '',
+  rainOrSnow: '',
   favoriteColor: '',
   favoriteColorOther: '',
   favoriteFlower: '',
@@ -34,6 +60,16 @@ const fruitOptions = ['apple', 'banana', 'mango', 'orange', 'grape', 'strawberry
 const animalOptions = ['dog', 'cat', 'bird', 'dolphin', 'elephant', 'lion', 'other'] as const;
 const sunriseOptions = ['sunrise', 'sunset'] as const;
 const petsOptions = ['dogs', 'cats'] as const;
+
+const cuisineOptions = ['indian', 'chinese', 'italian', 'japanese', 'mexican', 'other'] as const;
+const dessertOptions = ['cake', 'icecream', 'pie', 'pastry', 'pudding', 'other'] as const;
+const drinkOptions = ['coffee', 'tea', 'juice', 'soda', 'water', 'other'] as const;
+const seasonOptions = ['spring', 'summer', 'autumn', 'winter'] as const;
+const sportOptions = ['cricket', 'football', 'basketball', 'tennis', 'badminton', 'other'] as const;
+const movieGenreOptions = ['action', 'drama', 'comedy', 'thriller', 'sciFi', 'other'] as const;
+const musicGenreOptions = ['pop', 'rock', 'classical', 'jazz', 'hiphop', 'other'] as const;
+const timeOfDayOptions = ['morning', 'afternoon', 'evening', 'night'] as const;
+const binaryOptions = ['optionA', 'optionB'] as const;
 
 export default function SurveyPage() {
   const { t, lang } = useI18n();
@@ -117,6 +153,106 @@ export default function SurveyPage() {
         options: flowerOptions,
         helper: t('preferences.favoriteFlowerHelper'),
         otherKey: 'favoriteFlowerOther',
+      },
+      {
+        id: 'favoriteCuisine',
+        title: t('preferences.favoriteCuisine'),
+        type: 'select',
+        options: cuisineOptions,
+        helper: t('preferences.favoriteCuisineHelper'),
+      },
+      {
+        id: 'favoriteDessert',
+        title: t('preferences.favoriteDessert'),
+        type: 'select',
+        options: dessertOptions,
+        helper: t('preferences.favoriteDessertHelper'),
+      },
+      {
+        id: 'favoriteDrink',
+        title: t('preferences.favoriteDrink'),
+        type: 'select',
+        options: drinkOptions,
+        helper: t('preferences.favoriteDrinkHelper'),
+      },
+      {
+        id: 'favoriteSeason',
+        title: t('preferences.favoriteSeason'),
+        type: 'radio',
+        options: seasonOptions,
+        helper: t('preferences.favoriteSeasonHelper'),
+      },
+      {
+        id: 'favoriteSport',
+        title: t('preferences.favoriteSport'),
+        type: 'select',
+        options: sportOptions,
+      },
+      {
+        id: 'favoriteMovieGenre',
+        title: t('preferences.favoriteMovieGenre'),
+        type: 'select',
+        options: movieGenreOptions,
+      },
+      {
+        id: 'favoriteMusicGenre',
+        title: t('preferences.favoriteMusicGenre'),
+        type: 'select',
+        options: musicGenreOptions,
+      },
+      {
+        id: 'favoriteBookGenre',
+        title: t('preferences.favoriteBookGenre'),
+        type: 'select',
+        options: ['fiction','nonfiction','mystery','fantasy','other'],
+      },
+      {
+        id: 'favoriteTimeOfDay',
+        title: t('preferences.favoriteTimeOfDay'),
+        type: 'radio',
+        options: timeOfDayOptions,
+      },
+      {
+        id: 'coffeeOrTea',
+        title: t('preferences.coffeeOrTea'),
+        type: 'radio',
+        options: ['coffee','tea'],
+      },
+      {
+        id: 'sweetOrSpicy',
+        title: t('preferences.sweetOrSpicy'),
+        type: 'radio',
+        options: ['sweet','spicy'],
+      },
+      {
+        id: 'beachOrMountains',
+        title: t('preferences.beachOrMountains'),
+        type: 'radio',
+        options: ['beach','mountains'],
+      },
+      {
+        id: 'androidOrIphone',
+        title: t('preferences.androidOrIphone'),
+        type: 'radio',
+        options: ['android','iphone'],
+      },
+      {
+        id: 'netflixOrYoutube',
+        title: t('preferences.netflixOrYoutube'),
+        type: 'radio',
+        options: ['netflix','youtube'],
+      },
+      {
+        id: 'summerOrWinter',
+        title: t('preferences.summerOrWinter'),
+        type: 'radio',
+        options: ['summer','winter'],
+      },
+      {
+        id: 'rainOrSnow',
+        title: t('preferences.rainOrSnow'),
+        type: 'radio',
+        options: ['rain','snow'],
       },
       {
         id: 'favoriteFruit',
